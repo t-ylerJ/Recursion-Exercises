@@ -1,3 +1,4 @@
+
 def range(start, e)
   return [] if e < start
   return [] if e == start
@@ -12,14 +13,54 @@ end
 
 def array_sum2(arr)
   #base case
-  if arr.length > 0
-  #inductive 
+  return arr.first if arr.length == 1
+  return 0 if arr.length == 0
   
-    array_sum2(arr[0]) + array_sum2(arr[1..-1])
+   arr[-1] + array_sum2(arr[0...-1])
   end
 
-end
+  def exponent(b, n)
+    return 1 if n == 0
+    b * exponent(b, n - 1)
+  end
 
-# [1] - 1 
-# [1,2] - 3 = 1 + 2 = prev.sol + arr[-1]
-# [1,2,3] - 6 = 3 + 3 = prev.sol + arr[-1]
+  def exponent_2(b, n)
+    return 1 if n == 0
+    return b if n == 1
+   if n.even?
+    exponent_2(b, n / 2) * exponent_2(b, n / 2)
+   else
+    b * exponent_2(b, (n - 1) / 2) * exponent_2(b, (n - 1) / 2)
+   end
+  end
+
+
+ 
+
+
+
+  end
+
+
+
+
+
+
+
+
+# class Array
+#   def deep_dup(arr)
+#     deep_dups = []
+#       self.each do |ele| 
+#       if ele.is_a?(Array)
+#         arr += ele.flatten
+#       else
+#         arr << ele
+   
+#       end
+#     deep_dups
+#   end
+# end
+
+
+
