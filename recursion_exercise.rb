@@ -17,30 +17,39 @@ def array_sum2(arr)
   return 0 if arr.length == 0
   
    arr[-1] + array_sum2(arr[0...-1])
-  end
+end
 
-  def exponent(b, n)
-    return 1 if n == 0
-    b * exponent(b, n - 1)
-  end
+def exponent(b, n)
+  return 1 if n == 0
+  b * exponent(b, n - 1)
+end
 
-  def exponent_2(b, n)
-    return 1 if n == 0
-    return b if n == 1
-   if n.even?
+def exponent_2(b, n)
+  return 1 if n == 0
+  return b if n == 1
+  if n.even?
     exponent_2(b, n / 2) * exponent_2(b, n / 2)
-   else
+  else
     b * exponent_2(b, (n - 1) / 2) * exponent_2(b, (n - 1) / 2)
-   end
   end
+end
 
 
- 
-
-
-
+class Array
+  #[1, [2], [3, [4]]]
+  # [1,[2],[3,[4]]]
+  #[ele,]
+  def deep_dup
+    deep_copy = []
+    self.each do |ele|
+      if ele.is_a?(Array)
+        deep_copy << ele.deep_dup
+      else
+        deep_copy << ele
+      end
+    end
   end
-
+end
 
 
 
