@@ -51,25 +51,18 @@ class Array
   end
 end
 
+def fib(n, cache = {})
+  result = []
+  return [] if n == 0
+  return [0] if n == 1
+  return [0, 1] if n == 2
+
+  return cache[n] if cache.has_key?(n)
+  key = fib(n - 1, cache) + fib(n - 2, cache) 
+  cache[n] = key
+  result << key
+  return result
+end
 
 
-
-
-
-
-# class Array
-#   def deep_dup(arr)
-#     deep_dups = []
-#       self.each do |ele| 
-#       if ele.is_a?(Array)
-#         arr += ele.flatten
-#       else
-#         arr << ele
-   
-#       end
-#     deep_dups
-#   end
-# end
-
-
-
+ 
